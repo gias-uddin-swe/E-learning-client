@@ -1,0 +1,36 @@
+.small-icon {
+  width: 16px;
+}
+.corses-highlight {
+  font-size: 11px;
+}
+.enroll-button {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: rgb(250, 28, 12);
+  border-radius: 4.5;
+}
+
+.price {
+  font-size: 45px;
+  font-weight: 700;
+}
+.cart {
+  box-shadow: 4px 4px 8px gray;
+  padding: 10px;
+}
+.small-icon-outline {
+  width: 20px;
+}
+.enrollment-outline-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+.bksh-logo {
+  width: 16px;
+}
+.enrol-notice-container {
+  /* padding: 100px; */
+  /* width: 400px;
+  height: 400px; */
+}

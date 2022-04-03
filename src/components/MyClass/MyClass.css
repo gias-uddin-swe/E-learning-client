@@ -1,0 +1,31 @@
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.video-list {
+  border: 1px solid rgb(206, 206, 206);
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+  border-radius: 5px;
+}
+.video-list:hover {
+  box-shadow: 2px 2px 4px gray;
+  border-radius: 5px;
+}
+.video-list-container {
+  /* width: 100%; */
+  box-shadow: 5px 5px 10px gray;
+  height: 400px;
+  overflow-y: scroll;
+}

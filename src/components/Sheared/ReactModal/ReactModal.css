@@ -1,0 +1,22 @@
+.modal-profile-pic img {
+  width: 100px;
+  /* padding: 10px; */
+}
+.profile-button {
+  background-color: rgb(245, 49, 82);
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-weight: 350;
+  color: #fff;
+  font-size: 17px;
+}
+.user-extra-menus {
+  font-size: 17px;
+  font-weight: 200;
+  text-align: left;
+  line-height: 28px;
+  cursor: pointer;
+}
+.user-extra-menus:hover {
+  color: blue;
+}

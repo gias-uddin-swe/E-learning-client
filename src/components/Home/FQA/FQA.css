@@ -1,0 +1,12 @@
+.collap {
+  border: 1px solid gray;
+  padding: 10px;
+  margin-top: 5px;
+}
+.collapse-icon {
+  text-align: right !important;
+}
+#panel1a-header {
+  text-align: end !important;
+  font-size: 22px;
+}

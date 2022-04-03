@@ -1,0 +1,11 @@
+.App-time-box {
+  display: flex;
+  justify-content: space-around;
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.time {
+  font-size: 32px;
+}

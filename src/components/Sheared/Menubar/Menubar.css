@@ -1,0 +1,28 @@
+.menu-container {
+  text-decoration: none;
+  /* background-color: red; */
+  /* border: 1px solid gray; */
+  /* margin-left: 100px; */
+  /* text-align: right; */
+  /* margin-right: 50px; */
+}
+.items {
+  list-style: none;
+  padding-right: 20px;
+  margin-right: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.menubar {
+  /* position: -webkit-sticky; */
+  /* position: sticky; */
+  top: 0;
+  padding: 20px;
+  background-color: gray;
+}
+.items-parent {
+  text-decoration: none;
+}

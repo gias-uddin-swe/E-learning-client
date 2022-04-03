@@ -1,0 +1,16 @@
+.carousel-container {
+  padding: 20px;
+  margin-top: 50px;
+  /* border: 1px solid red; */
+}
+.carousel-title {
+  font-size: 48px;
+  font-weight: 900;
+  text-shadow: 1px 1px black;
+  color: rgb(245, 8, 47);
+}
+.carousel-button {
+  padding: 20px 40px;
+  background-color: rgb(245, 8, 47);
+  color: white;
+}

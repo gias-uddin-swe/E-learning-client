@@ -1,0 +1,15 @@
+#StudentMenuBar {
+  background-color: blue;
+}
+.profile-pic img {
+  width: 50px;
+}
+.profile-modal-button {
+  border: none;
+  outline: none;
+}
+.profile-modal-button:hover {
+  border: none;
+  outline: none;
+  background-color: blue;
+}

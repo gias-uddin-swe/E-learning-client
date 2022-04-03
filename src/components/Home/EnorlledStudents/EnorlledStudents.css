@@ -1,0 +1,14 @@
+.logo img {
+  width: 100px;
+}
+.counter-card {
+  padding: 20px;
+  border: 1px solid gray;
+}
+.text-bold {
+  font-size: 58px;
+  font-weight: 700;
+}
+.enroll-container {
+  background-color: #f1f2f4;
+}

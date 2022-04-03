@@ -1,0 +1,54 @@
+.teachers-card {
+  padding: 10px;
+  /* border: 2px solid red; */
+  width: 300px;
+  height: 450px;
+  transition: 0.9ms;
+}
+.teacher-card {
+  padding: 5px;
+  /* border: 2px solid rgb(168, 166, 166); */
+  background-color: rgb(238, 246, 247);
+  border-radius: 5px;
+}
+.teacher-photo img {
+  border-radius: 10px;
+  width: 250px;
+}
+.teachers-icons {
+  transition: 0.8ms;
+  display: none;
+  z-index: 1000;
+  margin-top: -130px;
+  margin-left: 50px;
+  position: absolute;
+}
+.teacher-card:hover .teachers-icons {
+  display: block;
+}
+.teacher-card:hover {
+  box-shadow: 4px 4px 8px gray;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(247, 238, 238, 0.5);
+  z-index: -200;
+  cursor: pointer;
+  overflow: hidden;
+}
+.teachers-icons {
+  background-color: rgb(247, 27, 63);
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: white;
+  transition: 0.8s;
+}
+.all-icons a {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+}
+.all-icons a:hover {
+  color: rgb(168, 167, 167);
+}

@@ -1,0 +1,28 @@
+.login-area {
+  /* border: 1px solid red; */
+  padding: 10px;
+}
+.login-box {
+  /* border: 1px solid rgb(10, 9, 9); */
+  box-shadow: 5px 5px 10px gray;
+  border-radius: 5px;
+}
+.input-fields {
+  width: 70%;
+  padding: 15px 45px;
+  margin-top: 10px;
+}
+.input-check {
+  /* font-size: 45px; */
+  padding: 20px;
+}
+.rememberMe {
+  font-size: 16px;
+}
+.login-button {
+  background-color: rgb(252, 23, 61);
+  border: none;
+  width: 70%;
+  color: white;
+  font-weight: bold;
+}

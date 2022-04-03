@@ -1,0 +1,12 @@
+.payment-logo {
+  width: 200px;
+  cursor: pointer;
+}
+.payment-button {
+  width: 60%;
+  background-color: rgb(45, 45, 224);
+  color: white;
+  font-size: 35px;
+  font-weight: 900;
+  border-radius: 5px;
+}
