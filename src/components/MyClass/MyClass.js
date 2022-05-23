@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Footer from "../Sheared/Footer/Footer";
 import "./MyClass.css";
 import StudentMenubar from "../Sheared/StudentMenubar/StudentMenubar";
@@ -6,9 +6,23 @@ import ReactPlayer from "react-player/youtube";
 import UseAnimations from "react-useanimations";
 import volume from "react-useanimations/lib/volume";
 import VideoList from "./../Sheared/VideoList/VideoList";
+import { useParams } from "react-router-dom";
 const MyClass = () => {
   const [volumes, setVolumes] = useState(10);
   const [muted, setMuted] = useState(false);
+  const { courseId } = useParams();
+  console.log(courseId);
+
+  const [videoData, setVideoData] = useState([]);
+  
+
+  useEffect(() => {
+    fetch("http://localhost:5000/courseVideos")
+      .then((res) => res.json())
+      .then((result) => setVideoData(result));
+  }, [courseId]);
+
+  console.log(videoData[0]?.videos);
 
   const [control, setControl] = useState({
     url: "https://www.youtube.com/watch?v=ysz5S6PUM-U",

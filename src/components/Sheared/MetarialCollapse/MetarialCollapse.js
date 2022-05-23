@@ -55,9 +55,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function MetarialCollapse({ handleChangeVideo, AllModules }) {
   const [expanded, setExpanded] = useState("");
 
-  const { courseId } = useParams();
-  console.log(courseId);
-
   const handleChange = (panel) => (event, newExpanded) => {
     console.log(panel);
     console.log(newExpanded);
