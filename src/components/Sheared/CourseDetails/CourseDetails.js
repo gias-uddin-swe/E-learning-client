@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Menubar from "../Menubar/Menubar";
 import "./CourseDetails.css";
@@ -6,8 +6,19 @@ import { Timeline } from "react-material-timeline";
 import { Avatar, Icon } from "@material-ui/core";
 import OutlineTimeCount from "./../../Home/EnrollDate/OutlineTimeCount";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const CourseDetails = () => {
+  const { category } = useParams();
+  console.log(category);
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/courses/${category}`)
+      .then((res) => res.json())
+      .then((data) => setCourses(data));
+  }, [category]);
+  console.log(courses);
   const events = [
     {
       title: "Event 1",
@@ -40,25 +51,27 @@ const CourseDetails = () => {
       ),
     },
   ];
+
   return (
     <div>
       <Menubar></Menubar>
       <div className="course-details mt-5">
         <div className="d-flex align-items-center justify-content-center pb-4">
-          <h1 className="course-title">price</h1>
-          <h1 className="course-title ms-5">Titiel</h1>
+          <h1 className="course-title">{courses?.courseName}</h1>
+          <h1 className="course-title ms-5">{courses?.courseTitle}</h1>
         </div>
         <div className="row container d-flex align-items-center w-100 m-auto">
           <div className="col-lg-4 col-md-5">
             <div className="course-image">
-              <img src="https://i.ibb.co/DpGMVwd/image.png" alt="" />
+              <img src={courses?.courseImage} alt="" />
               <p className="mt-2 text-start p-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                {courses?.description ||
+                  `Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Expedita quam, nam numquam veniam minus, possimus molestiae sunt
                 quisquam officia iure aut magni nisi aperiam consequuntur sed
                 impedit. Inventore harum blanditiis eligendi veritatis commodi a
                 ullam temporibus ipsum rem, illo saepe eius, pariatur
-                reprehenderit dolorum cumque.
+                reprehenderit dolorum cumque.`}
               </p>
               <div className="corses-highlight row  align-items-center justify-content-center w-75 m-auto ">
                 <div className="col-md-4 p-2 d-flex ">
@@ -67,7 +80,7 @@ const CourseDetails = () => {
                     src="https://i.ibb.co/k0SYGsr/download.png"
                     alt=""
                   />
-                  <p className="ms-2">250 note</p>
+                  <p className="ms-2">{courses?.note}</p>
                 </div>
                 <div className="col-md-4 p-2 d-flex">
                   <img
@@ -75,7 +88,7 @@ const CourseDetails = () => {
                     src="https://i.ibb.co/HtK84FV/download-1.png"
                     alt=""
                   />
-                  <p className="ms-2">{"200 assignment"}</p>
+                  <p className="ms-2">{courses?.assignment}</p>
                 </div>
                 <div className="col-md-4 p-2 d-flex">
                   <img
@@ -83,12 +96,14 @@ const CourseDetails = () => {
                     src="https://i.ibb.co/4SVxYR6/download-2.png"
                     alt=""
                   />
-                  <p className="ms-2">100 Quiz</p>
+                  <p className="ms-2">{courses?.quiz}</p>
                 </div>
-                <h5>Teachers Name : Jhon</h5>
+                <h5>Teachers Name : {courses?.courseTeacher}</h5>
               </div>
               <Link to="/paymentMethod">
-                <button className="payment-button mt-2">$ {"Price"}</button>
+                <button className="payment-button mt-2">
+                  ${courses?.price}
+                </button>
               </Link>
             </div>
           </div>
@@ -168,6 +183,7 @@ const CourseDetails = () => {
           </div>
         </div>
         <div className="d-flex align-items-center justify-content-center">
+          <h6>For CheckOut Please Select your payment Method</h6>
           <Link to="/bkashPayment">
             <img
               className="payment-logo"
@@ -175,7 +191,7 @@ const CourseDetails = () => {
               alt=""
             />
           </Link>
-          <Link to="stripPayment">
+          <Link to={`/stripPayment/${courses?._id}`}>
             <img
               className="payment-logo"
               src="https://quasarn.com/wp-content/uploads/2021/01/Stripe.png"

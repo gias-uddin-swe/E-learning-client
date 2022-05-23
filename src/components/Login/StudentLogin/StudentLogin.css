@@ -18,6 +18,7 @@
 }
 .rememberMe {
   font-size: 16px;
+
 }
 .login-button {
   background-color: rgb(252, 23, 61);
@@ -25,4 +26,8 @@
   width: 70%;
   color: white;
   font-weight: bold;
+}
+.google-btn-logo{
+  width:250px !important;
+  cursor:pointer;
 }

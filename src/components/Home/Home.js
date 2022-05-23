@@ -12,6 +12,7 @@ import Teachers from "../Teachers/Teachers";
 import FQA from "./FQA/FQA";
 import Footer from "../Sheared/Footer/Footer";
 import Contact from "../Sheared/Contact/Contact";
+import Topbar from "../Sheared/Topbar/Topbar";
 const Home = () => {
   return (
     <div className="home">

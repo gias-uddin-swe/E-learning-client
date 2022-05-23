@@ -32,7 +32,8 @@
 }
 .course-img img {
   border-radius: 5px;
-  width: 100%;
+  width:100%;
+  height: 200px;
   margin: 0 auto;
   /* padding: 1px; */
 }
@@ -42,7 +43,7 @@
 .enrollment-button {
   padding: 10px 15px;
   width: 100%;
-  background-color: red;
+  background-color: rgb(253, 8, 131);
 }
 .course-title {
   border: 1px solid gray;

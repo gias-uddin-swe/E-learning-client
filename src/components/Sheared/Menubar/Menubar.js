@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Menubar.css";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./../../../Hooks/firebase.config";
 const Menubar = () => {
+  const email = localStorage.getItem("email");
+  console.log(email);
+  const handleSignOut = () => {
+    localStorage.removeItem("email");
+    signOut(auth);
+  };
   return (
     <div>
       <nav className="menubar ">
@@ -22,9 +31,15 @@ const Menubar = () => {
               <Link className="items-parent" to="/contact">
                 <li className="ms-3 items">Contact</li>
               </Link>
-              <Link className="items-parent" to="/login">
-                <li className="ms-3 items">Login</li>
-              </Link>
+              {email ? (
+                <button onClick={handleSignOut} className="btn btn-danger">
+                  SignOut
+                </button>
+              ) : (
+                <Link className="items-parent" to="/login">
+                  <li className="ms-3 items">Login</li>
+                </Link>
+              )}
             </ul>
           </div>
         </div>

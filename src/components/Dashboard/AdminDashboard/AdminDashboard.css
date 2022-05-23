@@ -1,0 +1,18 @@
+
+.dashboard{
+    height:100vh;
+    position: fixed;
+    /* position:sticky; */
+    /* overflow-x: hidden; */
+}
+.collapse{
+    cursor: pointer;
+}
+.top-adminbar{
+    /* position: fixed; */
+    /* position:sticky; */
+}
+.db-menu{
+    overflow:scroll;
+    padding-bottom: 30px;
+}

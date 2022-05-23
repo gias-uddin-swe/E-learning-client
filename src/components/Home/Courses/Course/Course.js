@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Courses.css";
 
 const Course = ({ course }) => {
-  const { price, name, title, note, assignment, quiz, courseImg } =
-    course || {};
+  const {
+    _id,
+    courseName,
+    courseTitle,
+    note,
+    assignment,
+    quiz,
+    price,
+    courseDuration,
+    coursecategory,
+    category,
+    courseImage,
+  } = course || {};
 
+  console.log(course);
   return (
-    <div className="col-md-6 col-lg-4 col-sm-12">
+    <div className="col-md-6 col-lg-4 col-sm-12 mt-2">
       <div data-aos="zoom-in" data-aos-duration="1000" className="course-card">
         <div className="card">
           <div className="course-img">
-            <img src={courseImg} alt="" />
+            <img src={courseImage} alt="" />
           </div>
           <div className="course-details">
             <div className=" text-left d-flex justify-content-around course-name">
               <button className="text-left course-title">$ {price}</button>
-              <button className="text-right course-title">{name}</button>
+              <button className="text-right course-title">{courseName}</button>
             </div>
             <div className="">
-              <h3 className="text-center  course-title">{title}</h3>
+              <h3 className="text-center  course-title">{courseTitle}</h3>
             </div>
             <div className="corses-highlight row  align-items-center justify-content-center w-75 m-auto ">
               <div className="col-md-4 p-2 d-flex ">
@@ -50,10 +62,10 @@ const Course = ({ course }) => {
 
             <div className=" d-flex justify-content-around align-items-center">
               <p id="review">(2 Reviews)</p>
-              <p>05h 15m </p>
+              <p>{courseDuration} </p>
             </div>
           </div>
-          <Link to={`/courseDetails/${"python"}`}>
+          <Link to={`/courseDetails/${category}`}>
             <button className="enrollment-button">Enroll Now </button>
           </Link>
         </div>

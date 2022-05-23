@@ -3,15 +3,39 @@ import Menubar from "./../../Sheared/Menubar/Menubar";
 import Footer from "./../../Sheared/Footer/Footer";
 import { useForm } from "react-hook-form";
 import "./AdminLogin.css";
+import { Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router";
 
 const AdminLogin = () => {
+  const history = useHistory();
+  const location = useLocation();
+
+  const redirect_url = location.state?.from || "home";
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    data.status = "admin";
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.userInfo == "admin") {
+          history.push(redirect_url);
+          console.log(result);
+        } else {
+          alert("please login again beacuse of some issue !!");
+        }
+      });
+  };
   return (
     <div>
       <Menubar></Menubar>
@@ -28,6 +52,14 @@ const AdminLogin = () => {
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-sm-6 ">
+            <div className="rout-btn text-center">
+              <Link to="/login">
+                <button className="btn btn-info m-2 p-2">User</button>
+              </Link>
+              <Link to="/adminLogin">
+                <button className="btn btn-info m-2 p-2">Admin</button>
+              </Link>
+            </div>
             <div className="login-box p-4">
               <div className="login-area ">
                 <h4 className="text-start ps-5">Welcome Back</h4>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { React, useState } from "react";
 import { styled } from "@mui/material/styles";
 // import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
@@ -7,6 +7,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import UseAnimations from "react-useanimations";
 import menu3 from "react-useanimations/lib/menu3";
+import { useParams } from "react-router-dom";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -26,7 +27,7 @@ const AccordionSummary = styled((props) => (
       <UseAnimations
         animation={menu3}
         animationKey="menu3"
-        size={56}
+        size={38}
         style={{ padding: 100, textAlign: "end" }}
       />
     }
@@ -51,69 +52,89 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function MetarialCollapse({ handleChangeVideo }) {
-  const [expanded, setExpanded] = React.useState("panel1");
+export default function MetarialCollapse({ handleChangeVideo, AllModules }) {
+  const [expanded, setExpanded] = useState("");
+
+  const { courseId } = useParams();
+  console.log(courseId);
 
   const handleChange = (panel) => (event, newExpanded) => {
+    console.log(panel);
+    console.log(newExpanded);
     setExpanded(newExpanded ? panel : false);
+    // setExpanded(true);
   };
-  console.log(handleChangeVideo);
+  // console.log(AllModules);
+
+  // const module = AllModules?.filter((pd) => {
+  //   const test = pd?.modules;
+  //   console.log(test[0]?.module[0].videos);
+  // });
+
+  const videos = [
+    {
+      name: "Python programming Language",
+      module1: [
+        {
+          videoTitle:
+            "Be Ready  fr the course make ready your Editr and extension",
+          link: "https://youtu.be/pniVCEypZYI",
+        },
+        {
+          videoTitle: "Learn from Programming fundamental (variable) ",
+          link: "https://youtu.be/afPjO7T6kZU",
+        },
+        {
+          videoTitle: "basic programming concept (Array,method)",
+          link: "https://youtu.be/afPjO7T6kZU",
+        },
+      ],
+    },
+    {
+      name: "Web-Development (Fullstack)",
+      module2: [
+        {
+          videoTitle: "start video 1",
+          link: "https://youtu.be/afPjO7T6kZU",
+        },
+        {
+          videoTitle: "start video 1",
+          link: "https://youtu.be/afPjO7T6kZU",
+        },
+        {
+          videoTitle: "start video 1",
+          link: "https://youtu.be/afPjO7T6kZU",
+        },
+      ],
+    },
+  ];
+
   return (
     <div>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-      >
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Collapsible Group Item #1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            <button
-              onClick={(e) => handleChangeVideo(e.target)}
-              value="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-            >
-              how to javascript works
-            </button>
-            <br />
-            <button
-              onClick={(e) => handleChangeVideo(e.target)}
-              value="https://www.youtube.com/watch?v=CWfmvR9A83Y"
-            >
-              how to Python works
-            </button>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
-      >
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            <li>2</li>
-            <li>3</li>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      {videos.map((pd) => (
+        <Accordion
+          expanded={expanded === "paython"}
+          onChange={handleChange("paython")}
+          // onChange={() => setExpanded(!expanded)}
+        >
+          <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+            <Typography>Collapsible Group Item #1</Typography>
+          </AccordionSummary>
+
+          <AccordionDetails>
+            <Typography>
+              {pd?.module1?.map((vd) => (
+                <h5
+                  className="video-list-item"
+                  onClick={(e) => handleChangeVideo(vd?.link)}
+                >
+                  {vd?.videoTitle}
+                </h5>
+              ))}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </div>
   );
 }

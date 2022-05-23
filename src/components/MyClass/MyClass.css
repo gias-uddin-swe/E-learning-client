@@ -29,3 +29,11 @@
   height: 400px;
   overflow-y: scroll;
 }
+.video-list-item{
+  /* border: 1px solid gray; */
+  font-size: 15px;
+  padding: 12px;
+  cursor: pointer;
+  background-color:rgb(246, 251, 254);
+  box-shadow:2px 2px 4px gray;
+}

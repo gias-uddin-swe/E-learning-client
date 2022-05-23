@@ -28,8 +28,9 @@ const MyClass = () => {
   //   }
   // ]
   const handleChangeVideo = (url) => {
+    console.log(url);
     const previewLink = { ...control };
-    previewLink.url = url?.value;
+    previewLink.url = url;
     setControl(previewLink);
   };
 

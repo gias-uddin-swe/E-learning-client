@@ -3,6 +3,7 @@ import StudentMenubar from "../../Sheared/StudentMenubar/StudentMenubar";
 import "./StudentDashboard.css";
 import ProgressBar from "./../../../../node_modules/react-bootstrap/esm/ProgressBar";
 import Footer from "./../../Sheared/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const StudentDashboard = () => {
   const Courses = [
@@ -58,9 +59,11 @@ const StudentDashboard = () => {
                 <h1>
                   <ProgressBar animated now={75} />
                 </h1>
-                <button className="btn btn-primary mt-3">
-                  Continue Course
-                </button>
+                <Link to="/student/myClass/courseId">
+                  <button className="btn btn-primary mt-3">
+                    Continue Course
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

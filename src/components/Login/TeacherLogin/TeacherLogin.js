@@ -29,6 +29,17 @@ const TeacherLogin = () => {
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-sm-6 ">
+            <div className="rout-btn text-center">
+              <Link to="/studentLogin">
+                <button className="btn btn-info m-2 p-2">Student</button>
+              </Link>
+              <Link to="/teacherLogin">
+                <button className="btn btn-info m-2 p-2">Teacher</button>
+              </Link>
+              <Link to="/adminLogin">
+                <button className="btn btn-info m-2 p-2">Admin</button>
+              </Link>
+            </div>
             <div className="login-box p-4">
               <div className="login-area ">
                 <h4 className="text-start ps-5">Welcome Back</h4>

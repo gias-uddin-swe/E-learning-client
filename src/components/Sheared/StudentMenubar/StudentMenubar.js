@@ -22,15 +22,11 @@ const StudentMenubar = () => {
               <Link className="items-parent" to="/home">
                 <li className="ms-3 items">Home</li>
               </Link>
-
               <Link className="items-parent" to="/playGround">
                 <li className="ms-3 items">PlayGround</li>
               </Link>
               <Link className="items-parent" to="/contact">
-                <li className="ms-3 items">Dashboard</li>
-              </Link>
-              <Link className="items-parent" to="/login">
-                <li className="ms-3 items">Login</li>
+                <li className="ms-3 items">Submit Assignment</li>
               </Link>
             </ul>
             <div className="ms-3 profile-pic me-5">

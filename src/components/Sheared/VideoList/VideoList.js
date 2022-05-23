@@ -16,6 +16,14 @@ const VideoList = ({ changeVideo, handleChangeVideo }) => {
                   videoTitle: "start video 1",
                   link: "https://youtu.be/afPjO7T6kZU",
                 },
+                {
+                  videoTitle: "start video 1",
+                  link: "https://youtu.be/afPjO7T6kZU",
+                },
+                {
+                  videoTitle: "start video 1",
+                  link: "https://youtu.be/afPjO7T6kZU",
+                },
               ],
             },
             {
@@ -108,6 +116,7 @@ const VideoList = ({ changeVideo, handleChangeVideo }) => {
     <div>
       <MetarialCollapse
         handleChangeVideo={handleChangeVideo}
+        AllModules={AllModules}
       ></MetarialCollapse>
     </div>
   );

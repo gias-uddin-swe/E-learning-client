@@ -1,53 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Courses.css";
 import { DynamicStar } from "react-dynamic-star";
 import Course from "./Course/Course";
 
 const Courses = () => {
-  const courseInfo = [
-    {
-      name: "Python",
-      title: "Learn Python with fun",
-      status: "paid",
-      enrolled: "450",
-      review: "48",
-      description: "Learn Python with fun and explore",
-      note: "230",
-      assignment: "13",
-      quiz: "200",
-      duration: "2 months-3 months",
-      price: "17",
-      courseImg: "https://i.ibb.co/DpGMVwd/image.png",
-    },
-    {
-      name: "Python",
-      title: "Learn Python with fun",
-      status: "paid",
-      enrolled: "450",
-      review: "48",
-      description: "Learn Python with fun and explore",
-      note: "230",
-      assignment: "13",
-      quiz: "200",
-      duration: "2 months-3 months",
-      price: "17",
-      courseImg: "https://i.ibb.co/DpGMVwd/image.png",
-    },
-    {
-      name: "Python",
-      title: "Learn Python with fun",
-      status: "paid",
-      enrolled: "450",
-      review: "48",
-      description: "Learn Python with fun and explore",
-      note: "230",
-      assignment: "13",
-      quiz: "200",
-      duration: "2 months-3 months",
-      price: "17",
-      courseImg: "https://i.ibb.co/DpGMVwd/image.png",
-    },
-  ];
+  const [courses, setCourses] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(3);
+  useEffect(() => {
+    fetch(`http://localhost:5000/courses?page=${page}&size=${size}`)
+      .then((res) => res.json())
+      .then((data) => setCourses(data));
+  }, [page, size]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/courseCount")
+      .then((res) => res.json())
+      .then((data) => {
+        const count = data.count;
+        const pages = Math.ceil(count / 5);
+        setPageCount(pages);
+      });
+  }, []);
+
   return (
     <div className="mt-5 text-center container">
       <h1
@@ -59,9 +35,30 @@ const Courses = () => {
       </h1>
       <div className="courses-container ">
         <div className="row ">
-          {courseInfo?.map((course) => (
+          {courses?.map((course) => (
             <Course course={course}></Course>
           ))}
+          <div className="text-center w-100 m-auto d-flex justify-content-center">
+            <div className="pagination  mt-4">
+              {[...Array(pageCount).keys()].map((number) => (
+                <button
+                  className={page === number ? "selected" : ""}
+                  onClick={() => setPage(number)}
+                >
+                  {number + 1}
+                </button>
+              ))}
+
+              <select onChange={(e) => setSize(e.target.value)}>
+                <option value="5">5</option>
+                <option value="10" selected>
+                  10
+                </option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>

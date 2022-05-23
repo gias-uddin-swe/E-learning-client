@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../../Sheared/Footer/Footer";
 import Menubar from "../../Sheared/Menubar/Menubar";
@@ -6,6 +6,14 @@ import Course from "./../Courses/Course/Course";
 
 const AvilableCourse = () => {
   const { categoryName } = useParams();
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/courses`)
+      .then((res) => res.json())
+      .then((result) => setCourses(result));
+  }, []);
+
   console.log(categoryName);
   const courseInfo = [
     {
@@ -54,19 +62,28 @@ const AvilableCourse = () => {
       courseImg: "https://i.ibb.co/DpGMVwd/image.png",
     },
   ];
-  const availableCourses = courseInfo?.filter(
+
+  const availableCourses = courses?.filter(
     (pd) => pd?.category === categoryName
   );
-  console.log(availableCourses);
+  if (!availableCourses == []) {
+    return (
+      <h1 className="text-danger text-center text-bold">
+        No Available Course For{" "}
+        <span className="text-info">{categoryName}</span> now <br />
+        Pease try again later after few Days or try to choice form other
+        category
+      </h1>
+    );
+  }
+  // console.log(availableCourses == []);
   return (
     <div className="">
-      <Menubar></Menubar>
       <div className="row container mt-5">
         {availableCourses.map((course) => (
           <Course course={course}></Course>
         ))}
       </div>
-      <Footer></Footer>
     </div>
   );
 };
