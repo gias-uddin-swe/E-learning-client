@@ -61,6 +61,8 @@ export default function MetarialCollapse({ handleChangeVideo, AllModules }) {
     setExpanded(newExpanded ? panel : false);
     // setExpanded(true);
   };
+
+  console.log(AllModules?.videos);
   // console.log(AllModules);
 
   // const module = AllModules?.filter((pd) => {
@@ -108,7 +110,7 @@ export default function MetarialCollapse({ handleChangeVideo, AllModules }) {
 
   return (
     <div>
-      {videos.map((pd) => (
+      {AllModules?.videos.map((pd) => (
         <Accordion
           expanded={expanded === "paython"}
           onChange={handleChange("paython")}

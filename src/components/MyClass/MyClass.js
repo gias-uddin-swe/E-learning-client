@@ -14,15 +14,30 @@ const MyClass = () => {
   console.log(courseId);
 
   const [videoData, setVideoData] = useState([]);
-  
+  // const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courseVideos")
+    fetch(`http://localhost:5000/courseVideos`)
       .then((res) => res.json())
       .then((result) => setVideoData(result));
   }, [courseId]);
 
-  console.log(videoData[0]?.videos);
+  // console.log(videoData);
+  let videos = "";
+  if (courseId === "Web-development") {
+    videos = videoData[0];
+  } else if (courseId == "machine-learning") {
+    videos = videoData[1];
+  }
+
+  console.log(videos);
+  // if (videoData[0]?.videos[0]?.module1[0]?.category === "Web-development") {
+  //   setVideos(videoData[0]?.videos[0]);
+  // } else if (
+  //   videoData[0]?.videos[0]?.module1[0]?.category === "machine-learning"
+  // ) {
+  //   setVideos(videoData[1]?.videos[0]);
+  // }
 
   const [control, setControl] = useState({
     url: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
@@ -78,6 +93,7 @@ const MyClass = () => {
             <VideoList
               handleChangeVideo={handleChangeVideo}
               changeVideo={changeVideo}
+              AllModules={videos}
             ></VideoList>
           </div>
         </div>
