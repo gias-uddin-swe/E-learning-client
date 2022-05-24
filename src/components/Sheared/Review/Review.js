@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 const Review = () => {
   const [newRating, setNewRating] = useState(0);
 
+  
+
   const {
     register,
     handleSubmit,
@@ -14,6 +16,8 @@ const Review = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
+
+
     console.log(data);
     Swal.fire({
       position: "top-end",
@@ -26,6 +30,8 @@ const Review = () => {
   };
 
   console.log(newRating);
+
+
 
   return (
     <div>

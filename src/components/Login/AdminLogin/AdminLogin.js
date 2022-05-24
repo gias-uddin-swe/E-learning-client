@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Menubar from "./../../Sheared/Menubar/Menubar";
 import Footer from "./../../Sheared/Footer/Footer";
 import { useForm } from "react-hook-form";
 import "./AdminLogin.css";
 import { Link } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
+import Swal from "sweetalert2";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const AdminLogin = () => {
   const history = useHistory();
   const location = useLocation();
+  const [loadingSpin, setLoadingSpin] = useState(false);
 
   const redirect_url = location.state?.from || "home";
   const {
@@ -19,8 +22,9 @@ const AdminLogin = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    setLoadingSpin(true);
     data.status = "admin";
-    fetch("http://localhost:5000/login", {
+    fetch("http://localhost:5000/adminLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -28,11 +32,18 @@ const AdminLogin = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        if (result.userInfo == "admin") {
+        if (result.role == "admin") {
           history.push(redirect_url);
           console.log(result);
+          setLoadingSpin(false);
         } else {
-          alert("please login again beacuse of some issue !!");
+          Swal.fire({
+            icon: "error",
+            title: result?.message,
+            text: "please try again with valid information",
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+          setLoadingSpin(false);
         }
       });
   };
@@ -89,8 +100,20 @@ const AdminLogin = () => {
                     </div>
                     <p className="ms-5 text-danger"> Forget password ?</p>
                   </div>
-                  <button type="submit" className="btn  login-button p-2">
-                    Login
+                  <button
+                    type="submit"
+                    className="btn  login-button p-2  justify-content-center"
+                  >
+                    <div className="d-flex text-center justify-content-center">
+                      Login
+                      <ClipLoader
+                        color={"cyan"}
+                        // height={40}
+                        // width={100}
+                        loading={loadingSpin}
+                        size={25}
+                      />
+                    </div>
                   </button>
                 </form>
               </div>

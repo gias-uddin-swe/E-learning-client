@@ -8,11 +8,14 @@ import axios from "axios";
 import auth from "./../../../Hooks/firebase.config";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useHistory, useLocation } from "react-router";
+import ClipLoader from "react-spinners/ClipLoader";
+import Swal from "sweetalert2";
 
 const StudentLogin = () => {
   const history = useHistory();
   const location = useLocation();
   const [err, setErr] = useState({});
+  const [loadingSpin, setLoadingSpin] = useState(false);
 
   const redirect_url = location.state?.from || "home";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -29,6 +32,7 @@ const StudentLogin = () => {
   } = useForm();
   const [imageURL, setImageURL] = useState(null);
   const onSubmit = (data) => {
+    setLoadingSpin(true);
     console.log(data);
     fetch("http://localhost:5000/login", {
       method: "POST",
@@ -40,8 +44,16 @@ const StudentLogin = () => {
         if (result.status) {
           sessionStorage.setItem("email", data?.email);
           history.push(redirect_url);
+          setLoadingSpin(false);
           setErr("");
         } else {
+          Swal.fire({
+            icon: "error",
+            title: result?.message,
+            text: "please try again with valid information",
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+          setLoadingSpin(false);
           console.log(result);
           setErr(result);
         }
@@ -102,7 +114,16 @@ const StudentLogin = () => {
                     <p className="ms-5 text-danger"> Forget password ?</p>
                   </div>
                   <button type="submit" className="btn  login-button p-2">
-                    Login
+                    <div className="d-flex text-center justify-content-center">
+                      Login
+                      <ClipLoader
+                        color={"cyan"}
+                        // height={40}
+                        // width={100}
+                        loading={loadingSpin}
+                        size={25}
+                      />
+                    </div>
                   </button>
                   <Link to="/register">
                     <p className="text-danger mt-2">Create an new account </p>

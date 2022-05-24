@@ -21,10 +21,12 @@ import ManageUser from "../ManageUser/ManageUser";
 import Review from "./../../Sheared/Review/Review";
 import Approve from "../Action/Approve/Approve";
 import AddVideos from "../Admin/AddVideos/AddVideos";
+import { Link } from "react-router-dom";
+import MakeAdmin from "./../Admin/MakeAdmin/MakeAdmin";
 
 const AdminDashboard = () => {
   const [collapse, setCollapse] = useState(false);
-  const [show, setShow] = useState("AddVideos");
+  const [show, setShow] = useState("makeAdmin");
 
   return (
     <div>
@@ -48,7 +50,9 @@ const AdminDashboard = () => {
               </div>
             </SidebarHeader>
             <Menu iconShape="square" toggled={false}>
-              <MenuItem icon={collapse ? "Main" : "D"}>Dashboard</MenuItem>
+              {/* <Link to="/home">
+                <MenuItem icon={collapse ? "home" : "H"}>Home</MenuItem>
+              </Link> */}
               <SubMenu title="Course" icon={"C"}>
                 <MenuItem onClick={() => setShow("AddCourse")}>
                   Add Course
@@ -90,7 +94,9 @@ const AdminDashboard = () => {
               <MenuItem icon={"C D"}>Clear Device</MenuItem>
               <MenuItem icon={"A"}>Assignment</MenuItem>
               <MenuItem icon={"M A"}>My Assignment</MenuItem>
-              <MenuItem icon={"M A"}>Make Admin</MenuItem>
+              <MenuItem onClick={() => setShow("makeAdmin")} icon={"M A"}>
+                Make Admin
+              </MenuItem>
               <MenuItem onClick={() => setShow("Review")} icon={"R"}>
                 Review
               </MenuItem>
@@ -119,6 +125,7 @@ const AdminDashboard = () => {
             {show == "Review" && <Review></Review>}
             {show == "Approve" && <Approve></Approve>}
             {show == "AddVideos" && <AddVideos></AddVideos>}
+            {show == "makeAdmin" && <MakeAdmin></MakeAdmin>}
           </div>
         </div>
       </div>

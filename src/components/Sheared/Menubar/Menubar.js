@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Menubar.css";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../../Hooks/firebase.config";
 const Menubar = () => {
-  const email = sessionStorage.getItem("email");
-  console.log(email);
+  const [control, setControl] = useState(true);
+  const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    setEmail(sessionStorage.getItem("email"));
+  }, [control]);
+  console.log(email);
   const handleSignOut = () => {
     sessionStorage.removeItem("email");
     signOut(auth);
+    setControl(!control);
   };
   return (
     <div>
