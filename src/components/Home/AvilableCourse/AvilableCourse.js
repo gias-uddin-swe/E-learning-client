@@ -7,6 +7,7 @@ import Course from "./../Courses/Course/Course";
 const AvilableCourse = () => {
   const { categoryName } = useParams();
   const [courses, setCourses] = useState([]);
+  const [control, setControl] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/courses`)
@@ -66,7 +67,9 @@ const AvilableCourse = () => {
   const availableCourses = courses?.filter(
     (pd) => pd?.category === categoryName
   );
-  if (!availableCourses == []) {
+  console.log(availableCourses.length);
+
+  if (availableCourses.length <= 0) {
     return (
       <h1 className="text-danger text-center text-bold">
         No Available Course For{" "}
@@ -79,8 +82,9 @@ const AvilableCourse = () => {
   // console.log(availableCourses == []);
   return (
     <div className="">
+      (
       <div className="row container mt-5">
-        {availableCourses.map((course) => (
+        {availableCourses?.map((course) => (
           <Course course={course}></Course>
         ))}
       </div>

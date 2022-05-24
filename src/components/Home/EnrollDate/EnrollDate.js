@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./EnrollDate.css";
 import OutlineTimeCount from "./OutlineTimeCount";
 
@@ -85,7 +86,9 @@ const EnrollDate = () => {
                 </div>
                 <div className="Price">
                   <h1 className="price">$6500</h1>
-                  <button className="enroll-button">Enroll Now </button>
+                  <Link to="/courses">
+                    <button className="carousel-button">Enroll Now</button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -5,10 +5,11 @@ import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../../Hooks/firebase.config";
 const Menubar = () => {
-  const email = localStorage.getItem("email");
+  const email = sessionStorage.getItem("email");
   console.log(email);
+
   const handleSignOut = () => {
-    localStorage.removeItem("email");
+    sessionStorage.removeItem("email");
     signOut(auth);
   };
   return (

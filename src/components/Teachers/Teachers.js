@@ -17,56 +17,6 @@ const Teachers = () => {
       .then((data) => setTeacher(data));
   }, []);
 
-  // const teacherss = [
-  //   {
-  //     name: "nick jon",
-  //     position: "instructor",
-  //     univeristy: "Oxford University",
-  //     image:
-  //       "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/instructor-1-1.jpg",
-  //     facebook: "https://www.facebook.com/",
-  //     twitter: "https://www.google.com/",
-  //     instagram: "https://www.instagram.com/",
-  //     pin: "https://www.instagram.com/",
-  //     animation: "flip-left",
-  //   },
-  //   {
-  //     name: "nick jon",
-  //     position: "instructor",
-  //     univeristy: "Oxford University",
-  //     image:
-  //       "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/instructor-1-1.jpg",
-  //     facebook: "https://www.facebook.com/",
-  //     twitter: "https://www.google.com/",
-  //     instagram: "https://www.instagram.com/",
-  //     pin: "https://www.instagram.com/",
-  //     animation: "flip-up",
-  //   },
-  //   {
-  //     name: "nick jon",
-  //     position: "instructor",
-  //     univeristy: "Oxford University",
-  //     image:
-  //       "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/instructor-1-1.jpg",
-  //     facebook: "https://www.facebook.com/",
-  //     twitter: "https://www.google.com/",
-  //     instagram: "https://www.instagram.com/",
-  //     pin: "https://www.instagram.com/",
-  //     animation: "flip-down",
-  //   },
-  //   {
-  //     name: "nick jon",
-  //     position: "instructor",
-  //     univeristy: "Oxford University",
-  //     image:
-  //       "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/instructor-1-1.jpg",
-  //     facebook: "https://www.facebook.com/",
-  //     twitter: "https://www.google.com/",
-  //     instagram: "https://www.instagram.com/",
-  //     pin: "https://www.instagram.com/",
-  //     animation: "flip-right",
-  //   },
-  // ];
   return (
     <div className="container mt-5 w-100 m-auto ">
       <h1 className="title">Our Expert Instructors </h1>
@@ -99,8 +49,8 @@ const Teachers = () => {
                     </div>
                   </div>
                 </div>
-                <h1 className="teacher-name mt-3">{pd?.name}</h1>
-                <h3>{pd?.positioon || "Instructor"}</h3>
+                <h4 className="teacher-name mt-3">{pd?.name}</h4>
+                <h5>{pd?.positioon || "Instructor"}</h5>
                 <h6>{pd?.university || "Oxford University"}</h6>
               </div>
             </div>

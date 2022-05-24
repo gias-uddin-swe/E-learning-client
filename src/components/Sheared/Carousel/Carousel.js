@@ -1,6 +1,7 @@
 import React from "react";
 import CarouselConfig from "./Carousel.coifg";
 import "./Extra.css";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   return (
@@ -17,7 +18,9 @@ const Carousel = () => {
                 mobile apps. React also allows us to create reusable UI
                 components.
               </p>
-              <button className="carousel-button">Enroll Now</button>
+              <Link to="/courses">
+                <button className="carousel-button">Enroll Now</button>
+              </Link>
             </div>
             <div className="col-md-6">
               <img
@@ -39,7 +42,9 @@ const Carousel = () => {
                 frameworks like Node. js to power the mechanics behind a web
                 page, such as form processing and payments.
               </p>
-              <button className="carousel-button">More Details</button>
+              <Link to="/courses">
+                <button className="carousel-button">Enroll Now</button>
+              </Link>
             </div>
             <div className="col-md-6">
               <img
@@ -61,7 +66,9 @@ const Carousel = () => {
                 an average of 90% less energy and 85% fewer CO2 emissions per
                 student than traditional in person courses.
               </p>
-              <button className="carousel-button">Contact us</button>
+              <Link to="/courses">
+                <button className="carousel-button">Enroll Now</button>
+              </Link>
             </div>
             <div className="col-md-6">
               <img

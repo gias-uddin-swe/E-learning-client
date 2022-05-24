@@ -29,7 +29,7 @@ import ProcessPayment from "./Auth/PaymentGetWay/ProcessPayment";
 import Login from "./components/Login/Login";
 import AdminLogin from "./components/Login/AdminLogin/AdminLogin";
 import AdminDashboard from "./components/Dashboard/AdminDashboard/AdminDashboard";
-// import PrivateRoute from "./Auth/Private/PrivateRoute";
+import PrivateRoute from "./Auth/Private/PrivateRoute";
 
 function App() {
   useEffect(() => {
@@ -65,42 +65,49 @@ function App() {
               <Footer></Footer>
             </Route>
 
-            <Route path="/studentDashboard">
-              <StudentDashboard></StudentDashboard>
-            </Route>
+            <PrivateRoute path="/studentDashboard">
+              <Route>
+                <StudentDashboard></StudentDashboard>
+              </Route>
+            </PrivateRoute>
 
-            <Route path="/student/myClass/:courseId">
-              <MyClass></MyClass>
-            </Route>
+            <PrivateRoute path="/paymentMethod">
+              <Route>
+                <PaymentRoute></PaymentRoute>
+              </Route>
+            </PrivateRoute>
 
-            <Route path="/paymentMethod">
-              <PaymentRoute></PaymentRoute>
-            </Route>
+            <PrivateRoute path="/stripPayment/:id">
+              <Route>
+                <Menubar></Menubar>
+                <ProcessPayment></ProcessPayment>
+                <Footer></Footer>
+              </Route>
+            </PrivateRoute>
+            <PrivateRoute path="/courseDetails/:category">
+              <Route>
+                <CourseDetails></CourseDetails>
+              </Route>
+            </PrivateRoute>
 
-            <Route path="/courseDetails/:category">
-              <CourseDetails></CourseDetails>
-            </Route>
+            <PrivateRoute path="/student/myClass/:courseId">
+              <Route>
+                <MyClass></MyClass>
+              </Route>
+            </PrivateRoute>
 
             <Route path="/adminLogin">
               <AdminLogin></AdminLogin>
             </Route>
 
-            <Route path="/adminDashboard">
-              <AdminDashboard></AdminDashboard>
-            </Route>
-
-            <Route path="/stripPayment/:id">
-              <Menubar></Menubar>
-              <ProcessPayment></ProcessPayment>
-              {/* <SimpleCardForm></SimpleCardForm> */}
-              {/* <h1>Hello</h1> */}
-              <Footer></Footer>
-            </Route>
-
+            <PrivateRoute path="/adminDashboard">
+              <Route>
+                <AdminDashboard />
+              </Route>
+            </PrivateRoute>
             <Route path="/register">
               <StudentRegister></StudentRegister>
             </Route>
-
             <Route path="*">
               <Error404></Error404>
             </Route>

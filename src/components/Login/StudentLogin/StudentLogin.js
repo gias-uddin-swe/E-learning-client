@@ -12,11 +12,12 @@ import { useHistory, useLocation } from "react-router";
 const StudentLogin = () => {
   const history = useHistory();
   const location = useLocation();
+  const [err, setErr] = useState({});
 
   const redirect_url = location.state?.from || "home";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   if (user?.user?.email) {
-    localStorage.setItem("email", user?.user?.email);
+    sessionStorage.setItem("email", user?.user?.email);
     history.push(redirect_url);
   }
   console.log(user?.user?.email);
@@ -36,14 +37,17 @@ const StudentLogin = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         if (result.status) {
-          localStorage.setItem("email", data?.email);
+          sessionStorage.setItem("email", data?.email);
           history.push(redirect_url);
+          setErr("");
+        } else {
+          console.log(result);
+          setErr(result);
         }
       });
   };
-
+  console.log(err);
   return (
     <div>
       <div className="container">
@@ -70,6 +74,7 @@ const StudentLogin = () => {
             <div className="login-box p-4">
               <div className="login-area ">
                 <h4 className="text-start ps-5">Welcome Back</h4>
+                {err && <h6 className="text-danger mt-2">{err?.message}</h6>}
                 {/* asdsadasdasdsada */}
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input

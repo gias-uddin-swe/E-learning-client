@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Redirect, useAuth } from "react-router";
+import React, { useState } from "react";
+import { Redirect } from "react-router";
 import { Route } from "react-router-dom";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const email = localStorage.getItem("email");
+  const email = sessionStorage.getItem("email");
+  console.log(email);
 
   return (
     <div>

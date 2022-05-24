@@ -77,7 +77,7 @@ const StudentRegister = () => {
             .then((result) => {
               console.log(result);
               if (result.insertedId) {
-                localStorage.setItem("email", data?.email);
+                sessionStorage.setItem("email", data?.email);
                 console.log(result);
                 setLoadingSpin(false);
                 history.push(redirect_url);
