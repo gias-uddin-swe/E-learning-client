@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 const StudentDashboard = () => {
   const [courses, setCourses] = useState([]);
 
-  const email = "hossainmdkamal858@gmail.com";
+  const email = sessionStorage.getItem("email");
+  const name = sessionStorage.getItem("name");
 
   useEffect(() => {
     fetch(`http://localhost:5000/myAppointment/${email}`)
@@ -20,43 +21,27 @@ const StudentDashboard = () => {
   }, [email]);
 
   console.log(courses);
-  const coursesss = [
-    {
-      batch: 5,
-      author: "ঝংকার মাহবুব",
-      titile: "Complete Web Development Course With Jhankar Mahbub",
-      image: "https://web.programming-hero.com/thumbnail.png",
-      id: 1,
-    },
-    {
-      batch: 5,
-      author: "ঝংকার মাহবুব",
-      titile: "Complete Web Development Course With Jhankar Mahbub",
-      image: "https://web.programming-hero.com/thumbnail.png",
-      id: 2,
-    },
-    {
-      batch: 5,
-      author: "ঝংকার মাহবুব",
-      titile: "Complete Web Development Course With Jhankar Mahbub",
-      image: "https://web.programming-hero.com/thumbnail.png",
-      id: 3,
-    },
-    {
-      batch: 5,
-      author: "ঝংকার মাহবুব",
-      titile: "Complete Web Development Course With Jhankar Mahbub",
-      image: "https://web.programming-hero.com/thumbnail.png",
-      id: 4,
-    },
-  ];
+  if (courses.length <= 0) {
+    return (
+      <div>
+        <StudentMenubar></StudentMenubar>
+        <h1 className="text-danger">
+          You have Not CLass Enrolled for enrollment please check out{" "}
+        </h1>
+        <Link className="items-parent" to="/courses">
+          <h1 className="ms-3 items text-info">Enroll Now </h1>
+        </Link>
+        <Footer></Footer>
+      </div>
+    );
+  }
 
   return (
     <div>
       <StudentMenubar></StudentMenubar>
       <div className="container">
         <h1 className="mt-5">
-          Welcome back {email}, ready for your next lesson?
+          Welcome back {name}, ready for your next lesson?
         </h1>
         <div className="my-course row container d-flex    align-items-center justify-content-between  p-5">
           {courses?.map((pd) => (

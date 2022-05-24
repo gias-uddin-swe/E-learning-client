@@ -5,9 +5,7 @@ import Swal from "sweetalert2";
 
 const Review = () => {
   const [newRating, setNewRating] = useState(0);
-
-  
-
+  const email = sessionStorage.getItem("email");
   const {
     register,
     handleSubmit,
@@ -16,22 +14,41 @@ const Review = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
+    data.email = email;
+    data.date = new Date();
+    data.rating = newRating;
 
-
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+      });
     console.log(data);
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    reset();
+
+    // reset();
   };
 
   console.log(newRating);
-
-
 
   return (
     <div>

@@ -2,6 +2,8 @@ import React from "react";
 import "./ReactModal.css";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCoffee,
@@ -14,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import auth from "./../../../Hooks/firebase.config";
 const customStyles = {
   content: {
     width: "400px",
@@ -28,6 +31,14 @@ const customStyles = {
 
 const ReactModal = ({ openModal, closeModal, modalIsOpen }) => {
   console.log(openModal);
+
+  const handleSignOut = () => {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("name");
+    signOut(auth);
+    window.location.reload();
+  };
   let subtitle;
 
   function afterOpenModal() {
@@ -82,7 +93,9 @@ const ReactModal = ({ openModal, closeModal, modalIsOpen }) => {
             </div>
             <div className="d-flex align-items-center text-start mt-2">
               <FontAwesomeIcon icon={faRightFromBracket} />{" "}
-              <li className="ms-2 user-extra-menus">Log Out</li>
+              <li onClick={handleSignOut} className="ms-2 user-extra-menus">
+                Log Out
+              </li>
             </div>
           </ul>
         </div>

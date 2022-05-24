@@ -43,6 +43,8 @@ const StudentLogin = () => {
       .then((result) => {
         if (result.status) {
           sessionStorage.setItem("email", data?.email);
+          sessionStorage.setItem("role", result?.role);
+          sessionStorage.setItem("name", result?.name);
           history.push(redirect_url);
           setLoadingSpin(false);
           setErr("");

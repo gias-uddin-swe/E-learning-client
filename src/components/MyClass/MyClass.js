@@ -12,6 +12,7 @@ const MyClass = () => {
   const [muted, setMuted] = useState(false);
   const { courseId } = useParams();
   console.log(courseId);
+  const email = sessionStorage.getItem("email");
 
   const [videoData, setVideoData] = useState([]);
   // const [videos, setVideos] = useState([]);

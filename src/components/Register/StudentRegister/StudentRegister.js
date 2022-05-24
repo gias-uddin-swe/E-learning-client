@@ -76,19 +76,22 @@ const StudentRegister = () => {
             .then((res) => res.json())
             .then((result) => {
               console.log(result);
-              if (result.insertedId) {
+              if (result.result.insertedId) {
                 sessionStorage.setItem("email", data?.email);
+                sessionStorage.setItem("role", data?.role);
+                sessionStorage.setItem("user", data?.name);
                 console.log(result);
                 setLoadingSpin(false);
                 history.push(redirect_url);
 
                 Swal.fire("Good job!", "You clicked the button!", "success");
               } else {
+                setLoadingSpin(false);
                 Swal.fire({
                   icon: "error",
-                  title: "Oops...",
+                  title: result?.message,
                   text: "Something went wrong!",
-                  footer: "Please try again!!!!",
+                  footer: "Please try another email!!!!",
                 });
               }
             });
