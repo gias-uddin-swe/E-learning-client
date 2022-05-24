@@ -4,6 +4,7 @@ import "./Menubar.css";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../../Hooks/firebase.config";
+
 const Menubar = () => {
   const [control, setControl] = useState(true);
   const [email, setEmail] = useState("");
@@ -30,6 +31,9 @@ const Menubar = () => {
               </Link>
               <Link className="items-parent" to="/courses">
                 <li className="ms-3 items">Courses</li>
+              </Link>
+              <Link className="items-parent" to="/studentDashboard">
+                <li className="ms-3 items">Dashboard</li>
               </Link>
               <Link className="items-parent" to="/playGround">
                 <li className="ms-3 items">PlayGround</li>
