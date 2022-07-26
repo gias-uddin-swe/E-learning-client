@@ -68,7 +68,7 @@ const StudentRegister = () => {
         data.role = "user";
 
         if (data?.studentImage) {
-          fetch("http://localhost:5000/addStudent", {
+          fetch("https://stormy-coast-94692.herokuapp.com/addStudent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -76,7 +76,7 @@ const StudentRegister = () => {
             .then((res) => res.json())
             .then((result) => {
               console.log(result);
-              if (result.result.insertedId) {
+              if (result?.result?.insertedId) {
                 sessionStorage.setItem("email", data?.email);
                 sessionStorage.setItem("role", data?.role);
                 sessionStorage.setItem("user", data?.name);
@@ -85,7 +85,7 @@ const StudentRegister = () => {
                 history.push(redirect_url);
 
                 Swal.fire("Good job!", "You clicked the button!", "success");
-              } else {
+              } else if (result?.status == false) {
                 setLoadingSpin(false);
                 Swal.fire({
                   icon: "error",
@@ -106,7 +106,8 @@ const StudentRegister = () => {
 
   return (
     <div>
-      <Menubar></Menubar>\<h6>Student register</h6>
+      {/* <Menubar></Menubar> */}
+      <h6>Student register</h6>
       <div className="container">
         {/* <h1>Student Login</h1> */}
         <div className="row d-flex align-items-center justify-content-center ">
@@ -202,7 +203,7 @@ const StudentRegister = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

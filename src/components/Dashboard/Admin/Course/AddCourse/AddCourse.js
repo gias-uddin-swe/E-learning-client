@@ -29,7 +29,7 @@ const AddCourse = () => {
         data.courseImage = response?.data?.data?.display_url;
 
         if (data?.courseImage) {
-          fetch("http://localhost:5000/addCourse", {
+          fetch("https://stormy-coast-94692.herokuapp.com/addCourse", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),

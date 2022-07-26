@@ -8,6 +8,7 @@ import UseAnimations from "react-useanimations";
 import github from "react-useanimations/lib/github";
 import menu3 from "react-useanimations/lib/menu3";
 import MetarialCollapse from "../../Sheared/MetarialCollapse/MetarialCollapse";
+import Fqa from "../../Sheared/Fqa/Fqa";
 
 const FQA = () => {
   return (
@@ -22,7 +23,7 @@ const FQA = () => {
           </div>
         </div>
         <div className="col-md-6 col-lg-7">
-          <MetarialCollapse></MetarialCollapse>
+          <Fqa></Fqa>
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@ const SplitForm = ({ handlePayment, courseId }) => {
   // const { doctorEmail } = useParams();
   // console.log(doctorEmail);
   console.log(courseId);
-  const email = "hossainmdkamal858@gmail.com";
+  const email = sessionStorage.getItem("email");
 
   const [error, setError] = useState(null);
   const [show, setShow] = useState(null);
@@ -80,18 +80,16 @@ const SplitForm = ({ handlePayment, courseId }) => {
       };
 
       handleUpdate(courseId, "myBooking", payment);
+      Swal.fire({
+        title: "WOW Congratulation !!",
+        text: " Remember That Hard work is most important for be Success",
+        imageUrl: "https://i.ibb.co/Hn13ycf/giphy.gif",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
 
-      if (response?.insertedId) {
-        Swal.fire({
-          title: "WOW Congratulation !!",
-          text: " Remember That Hard work is most important for be Success",
-          imageUrl: "https://i.ibb.co/Hn13ycf/giphy.gif",
-          imageWidth: 400,
-          imageHeight: 200,
-          imageAlt: "Custom image",
-        });
-      }
-      // redireact();
+      redireact();
     }
     if (payload.error) {
       setShow(false);
@@ -101,7 +99,7 @@ const SplitForm = ({ handlePayment, courseId }) => {
   };
 
   const redireact = () => {
-    // history.push(`/applyAppointment/${doctorEmail}`);
+    history.push(`/studentDashboard`);
   };
 
   console.log(response);

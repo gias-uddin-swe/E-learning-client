@@ -29,7 +29,14 @@ const Menubar = () => {
     <div>
       <nav className="menubar ">
         <div className="row ">
-          <div className="col-md-2">Company Logo</div>
+          <div className="col-md-2 text-info">
+            {/* <img
+              className="w-25 img-fluid"
+              src="	https://i.ibb.co/4fCvf42/image.png"
+              alt="company logo"
+            /> */}
+            company logo
+          </div>
           <div className="col-md-10">
             <ul className="d-flex justify-content-end menu-container w-100 m-auto">
               <Link className="items-parent" to="/home">

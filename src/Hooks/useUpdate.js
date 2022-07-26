@@ -6,7 +6,7 @@ const useUpdate = () => {
   const handleUpdate = (id, route, data) => {
     console.log(id, route, data);
 
-    const url = `http://localhost:5000/${route}/${id}`;
+    const url = `https://stormy-coast-94692.herokuapp.com/${route}/${id}`;
     fetch(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

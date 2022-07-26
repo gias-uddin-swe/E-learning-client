@@ -14,7 +14,7 @@ const CourseDetails = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/courses/${category}`)
+    fetch(`https://stormy-coast-94692.herokuapp.com/courses/${category}`)
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, [category]);

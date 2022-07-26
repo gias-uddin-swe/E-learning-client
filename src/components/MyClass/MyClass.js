@@ -18,7 +18,7 @@ const MyClass = () => {
   // const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/courseVideos`)
+    fetch(`https://stormy-coast-94692.herokuapp.com/courseVideos`)
       .then((res) => res.json())
       .then((result) => setVideoData(result));
   }, [courseId]);
@@ -41,7 +41,7 @@ const MyClass = () => {
   // }
 
   const [control, setControl] = useState({
-    url: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+    url: "https://youtu.be/kyZ_5cvrXJI",
     width: "100",
     height: "100",
   });

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Feedback.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import StarRatings from "react-star-ratings";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -23,60 +24,41 @@ const responsive = {
 };
 
 const Feedback = () => {
-  const Feedbacks = [
-    {
-      name: "Jon",
-      rating: "5",
-      comments: " i love asdjasodijsa asjdasiudhasid asjdasiudhsajdnas",
-      userImage:
-        "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/client-1.jpg",
-      position: "full stack developer",
-      Animation: "zoom-in-left",
-    },
-    {
-      name: "Jon",
-      rating: "5",
-      comments: " i love asdjasodijsa asjdasiudhasid asjdasiudhsajdnas",
-      userImage:
-        "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/client-1.jpg",
-      position: "full stack developer",
-      Animation: "zoom-in-right",
-    },
-    {
-      name: "Jon",
-      rating: "5",
-      comments: " i love asdjasodijsa asjdasiudhasid asjdasiudhsajdnas",
-      userImage:
-        "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/client-1.jpg",
-      position: "full stack developer",
-      Animation: "zoom-out",
-    },
-    {
-      name: "Jon",
-      rating: "5",
-      comments: " i love asdjasodijsa asjdasiudhasid asjdasiudhsajdnas",
-      userImage:
-        "https://demo.omexer.com/main/wp-content/uploads/sites/3/2021/03/client-1.jpg",
-      position: "full stack developer",
-      Animation: "zoom-out-up",
-    },
-  ];
+  const [review, setReview] = useState([]);
+  const [newRating, setNewRating] = useState(0);
+
+  useEffect(() => {
+    fetch("https://stormy-coast-94692.herokuapp.com/reviews")
+      .then((response) => response.json())
+      .then((data) => setReview(data));
+  }, []);
+
+  console.log(review);
   return (
     <div className="mt-5 container ">
       <h1>Student Feedback </h1>
       <div className="feedback-container row d-flex p-2 m-2 mt-5">
         <Carousel responsive={responsive}>
-          {Feedbacks.map((user) => (
-            <div data-aos={user?.Animation} className="feedback-card ">
+          {review?.map((user) => (
+            <div data-aos="zoom-out" className="feedback-card ">
               <div className="user-photo">
-                <img src={user?.userImage} alt="" />
+                <img src={user?.image} alt="" />
               </div>
               <div className="user-comments">
-                <p>{user?.comments?.slice(0, 100)}</p>
+                <p>{user?.review?.comments?.slice(0, 200)}</p>
               </div>
-              <h1>{"******"}</h1>
+              <h4>
+                <StarRatings
+                  rating={user?.review?.rating}
+                  starRatedColor="yellow"
+                  numberOfStars={5}
+                  name="rating"
+                  starDimension={30}
+                  starHoverColor="yellow"
+                />
+              </h4>
               <h4>{user?.name}</h4>
-              <h6>{user?.position}</h6>
+              <h6>{user?.review?.date}</h6>
             </div>
           ))}
         </Carousel>

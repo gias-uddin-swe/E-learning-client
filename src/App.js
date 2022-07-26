@@ -106,7 +106,9 @@ function App() {
               </Route>
             </PrivateRoute>
             <Route path="/register">
+              <Menubar></Menubar>
               <StudentRegister></StudentRegister>
+              <Footer></Footer>
             </Route>
             <Route path="*">
               <Error404></Error404>

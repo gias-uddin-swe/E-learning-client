@@ -47,7 +47,7 @@ const AllTeacher = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/teachers")
+    fetch("https://stormy-coast-94692.herokuapp.com/teachers")
       .then((res) => res.json())
       .then((data) => {
         setTeacher(data);

@@ -13,7 +13,7 @@ const AdminLogin = () => {
   const location = useLocation();
   const [loadingSpin, setLoadingSpin] = useState(false);
 
-  const redirect_url = location.state?.from || "home";
+  const redirect_url = location.state?.from || "adminDashboard";
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ const AdminLogin = () => {
     console.log(data);
     setLoadingSpin(true);
     data.status = "admin";
-    fetch("http://localhost:5000/adminLogin", {
+    fetch("https://stormy-coast-94692.herokuapp.com/adminLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -33,7 +33,10 @@ const AdminLogin = () => {
       .then((result) => {
         console.log(result);
         if (result.role == "admin") {
-          history.push(redirect_url);
+          sessionStorage.setItem("email", data?.email);
+          sessionStorage.setItem("role", result?.role);
+          sessionStorage.setItem("name", result?.name);
+          history.push("/adminDashboard");
           console.log(result);
           setLoadingSpin(false);
         } else {

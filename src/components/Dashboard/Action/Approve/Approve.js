@@ -15,7 +15,7 @@ const Approve = () => {
   const [course, setCourse] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookedCourse")
+    fetch("https://stormy-coast-94692.herokuapp.com/bookedCourse")
       .then((res) => res.json())
       .then((result) => {
         setCourse(result);

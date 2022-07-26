@@ -34,7 +34,7 @@ const StudentLogin = () => {
   const onSubmit = (data) => {
     setLoadingSpin(true);
     console.log(data);
-    fetch("http://localhost:5000/login", {
+    fetch("https://stormy-coast-94692.herokuapp.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

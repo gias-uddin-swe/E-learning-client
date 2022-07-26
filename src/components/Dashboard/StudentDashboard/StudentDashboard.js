@@ -12,7 +12,7 @@ const StudentDashboard = () => {
   const name = sessionStorage.getItem("name");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myAppointment/${email}`)
+    fetch(`https://stormy-coast-94692.herokuapp.com/myAppointment/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);

@@ -117,7 +117,7 @@ export default function MetarialCollapse({ handleChangeVideo, AllModules }) {
           // onChange={() => setExpanded(!expanded)}
         >
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography>Collapsible Group Item #1</Typography>
+            <Typography>{pd?.name} playlist</Typography>
           </AccordionSummary>
 
           <AccordionDetails>

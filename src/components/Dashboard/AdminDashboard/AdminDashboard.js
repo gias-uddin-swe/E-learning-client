@@ -23,10 +23,19 @@ import Approve from "../Action/Approve/Approve";
 import AddVideos from "../Admin/AddVideos/AddVideos";
 import { Link } from "react-router-dom";
 import MakeAdmin from "./../Admin/MakeAdmin/MakeAdmin";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./../../../Hooks/firebase.config";
 
 const AdminDashboard = () => {
   const [collapse, setCollapse] = useState(false);
-  const [show, setShow] = useState("makeAdmin");
+  const [show, setShow] = useState("AddCourse");
+  const handleSignOut = () => {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("user");
+    signOut(auth);
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -109,7 +118,12 @@ const AdminDashboard = () => {
             </Menu>
 
             <SidebarFooter>
-              <h6>Hello</h6>
+              <h3
+                className="text-center p-3 cursor-pointer"
+                onClick={handleSignOut}
+              >
+                Hello
+              </h3>
             </SidebarFooter>
           </ProSidebar>
           ;

@@ -17,20 +17,20 @@ const Topbar = () => {
   const [isLoading, setIsloading] = useState(false);
   return (
     <Navbar
-    
-    //   loader={<Loader type="Puff" color="#D85B5B" height={25} width={25} />}
-    //   isLoading={this.state.isLoading}
+      //   loader={<Loader type="Puff" color="#D85B5B" height={25} width={25} />}
+      //   isLoading={this.state.isLoading}
       helpCallback={() => {
         alert("I need help... and coffee...");
       }}
       menuItems={[
         {
-          title: "Administration",
+          title: "Logout",
           icon: faUsers,
           isAuth: true,
           onClick: () => {
-            // What you want to do...
-            alert("Its coffee time...");
+            sessionStorage.removeItem("email");
+            sessionStorage.removeItem("user");
+            window.location.reload();
           },
         },
         {
