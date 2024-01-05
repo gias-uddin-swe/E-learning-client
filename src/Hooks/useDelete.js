@@ -4,7 +4,7 @@ const useDelete = () => {
   const [response, setResponse] = useState({});
 
   const DeleteFromDB = (id, route) => {
-    fetch(`https://stormy-coast-94692.herokuapp.com/${route}/${id}`, {
+    fetch(`http://localhost:5000/${route}/${id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })

@@ -3,6 +3,7 @@ import "./Contact.css";
 // import { useForm } from "react-hook-form";
 import emailjs from "emailjs-com";
 // init("user_ERaQzOqot4Pu09jhg49n4");
+import contactImg from "../../../Images/contact.png";
 
 const Contact = () => {
   // const {
@@ -74,11 +75,7 @@ const Contact = () => {
               data-aos-anchor-placement="center-bottom"
               className="contact-im"
             >
-              <img
-                className="w-100"
-                src="https://i.ibb.co/FVMcnDp/undraw-contact-us-15o2.png"
-                alt=""
-              />
+              <img className="w-75" src={contactImg} alt="" />
             </div>
           </div>
         </div>

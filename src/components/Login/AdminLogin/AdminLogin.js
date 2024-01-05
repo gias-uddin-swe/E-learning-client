@@ -24,7 +24,7 @@ const AdminLogin = () => {
     console.log(data);
     setLoadingSpin(true);
     data.status = "admin";
-    fetch("https://stormy-coast-94692.herokuapp.com/adminLogin", {
+    fetch("http://localhost:5000/adminLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

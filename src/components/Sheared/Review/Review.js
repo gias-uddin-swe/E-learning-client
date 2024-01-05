@@ -18,7 +18,7 @@ const Review = () => {
     data.date = new Date();
     data.rating = newRating;
 
-    fetch("https://stormy-coast-94692.herokuapp.com/review", {
+    fetch("http://localhost:5000/review", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

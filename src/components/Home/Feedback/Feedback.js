@@ -28,7 +28,7 @@ const Feedback = () => {
   const [newRating, setNewRating] = useState(0);
 
   useEffect(() => {
-    fetch("https://stormy-coast-94692.herokuapp.com/reviews")
+    fetch("http://localhost:5000/reviews")
       .then((response) => response.json())
       .then((data) => setReview(data));
   }, []);

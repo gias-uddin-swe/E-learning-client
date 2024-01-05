@@ -114,7 +114,7 @@ const AddVideos = () => {
     }
 
     if (videos) {
-      fetch("https://stormy-coast-94692.herokuapp.com/addVideos", {
+      fetch("http://localhost:5000/addVideos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ videos }),

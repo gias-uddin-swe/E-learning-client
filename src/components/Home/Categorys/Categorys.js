@@ -11,7 +11,7 @@ const Categorys = () => {
   const [allCategorys, setAllCategorys] = useState([]);
 
   useEffect(() => {
-    fetch("https://stormy-coast-94692.herokuapp.com/category")
+    fetch("http://localhost:5000/category")
       .then((res) => res.json())
       .then((data) => setAllCategorys(data));
   }, []);

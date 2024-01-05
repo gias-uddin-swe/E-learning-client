@@ -7,7 +7,7 @@ const AddCategory = () => {
   const onSubmit = (data) => {
     data.date = new Date();
 
-    fetch("https://stormy-coast-94692.herokuapp.com/category", {
+    fetch("http://localhost:5000/category", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

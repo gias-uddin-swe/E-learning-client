@@ -10,7 +10,7 @@ const AvilableCourse = () => {
   const [control, setControl] = useState(true);
 
   useEffect(() => {
-    fetch(`https://stormy-coast-94692.herokuapp.com/courses`)
+    fetch(`http://localhost:5000/courses`)
       .then((res) => res.json())
       .then((result) => setCourses(result));
   }, []);

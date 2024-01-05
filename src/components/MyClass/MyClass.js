@@ -18,7 +18,7 @@ const MyClass = () => {
   // const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch(`https://stormy-coast-94692.herokuapp.com/courseVideos`)
+    fetch(`http://localhost:5000/courseVideos`)
       .then((res) => res.json())
       .then((result) => setVideoData(result));
   }, [courseId]);

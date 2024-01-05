@@ -37,7 +37,7 @@ const AllCourses = () => {
   };
 
   useEffect(() => {
-    fetch("https://stormy-coast-94692.herokuapp.com/courses")
+    fetch("http://localhost:5000/courses")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);

@@ -14,7 +14,7 @@ const MakeTeacher = () => {
   const [spiner, setSpiner] = useState(true);
 
   useEffect(() => {
-    fetch("https://stormy-coast-94692.herokuapp.com/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);

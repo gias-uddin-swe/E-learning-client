@@ -68,7 +68,7 @@ const StudentRegister = () => {
         data.role = "user";
 
         if (data?.studentImage) {
-          fetch("https://stormy-coast-94692.herokuapp.com/addStudent", {
+          fetch("http://localhost:5000/addStudent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),

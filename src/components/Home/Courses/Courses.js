@@ -9,15 +9,13 @@ const Courses = () => {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(3);
   useEffect(() => {
-    fetch(
-      `https://stormy-coast-94692.herokuapp.com/courses?page=${page}&size=${size}`
-    )
+    fetch(`http://localhost:5000/courses?page=${page}&size=${size}`)
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, [page, size]);
 
   useEffect(() => {
-    fetch("https://stormy-coast-94692.herokuapp.com/courseCount")
+    fetch("http://localhost:5000/courseCount")
       .then((res) => res.json())
       .then((data) => {
         const count = data.count;

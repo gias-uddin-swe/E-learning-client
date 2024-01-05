@@ -15,6 +15,7 @@ import facebook from "react-useanimations/lib/facebook";
 import instagram from "react-useanimations/lib/instagram";
 import linkedin from "react-useanimations/lib/linkedin";
 import twitter from "react-useanimations/lib/twitter";
+import paymentsimg from "../../../Images/logo/payments.f8a603e8.png";
 
 const Footer = () => {
   return (
@@ -102,7 +103,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="payments-photo mt-4">
-          <img src="https://i.ibb.co/HBVxFFh/payments-f8a603e8.png" alt="" />
+          <img src={paymentsimg} alt="" />
         </div>
         <p className="text-white mt-5">
           {" "}
